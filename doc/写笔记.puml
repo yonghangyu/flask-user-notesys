@@ -1,0 +1,25 @@
+@startuml
+|前端|
+start
+:点击登录;
+:跳转到欢迎页面;
+:点击创建笔记;
+:跳转到写笔记页面;
+:填写标题和笔记内容;
+:点击保存笔记;
+|#AntiqueWhite|后端|
+:拿到标题和笔记内容;
+:根据token获取用户id，即uid;
+:获取创建笔记时间;
+:将uid,title,content,create_time入note_info表中;
+|#gray|数据库|
+:insert into note_info (uid, title, content, create_time) values (str1, str2, str3, str4) ;
+|#AntiqueWhite|后端|
+:笔记创建完成;
+:重定向到欢迎页面;
+|前端|
+:跳转到欢迎页面;
+stop
+
+
+@enduml

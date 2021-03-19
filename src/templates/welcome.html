@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h>你好, {{ user.get('username', '陌生人') }}</h>
+    <br>
+    {% if user.get('uid') %}
+    <a href="/logout">退出登录</a>
+    <br>
+    <a href="/createnote">创建笔记</a>
+    <br>
+    <a href="/notes">查询笔记列表</a>
+    {% else %}
+    <a href="/register">注册</a>
+    <a href="/login">登录</a>
+    {% endif %}
+</body>
+</html>

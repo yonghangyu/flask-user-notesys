@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+|前端|
+start
+:填写username+password;
+:点击注册;
+|后端|
+:收到username+password;
+if (username已存在) then (存在)
+    stop
+else (不存在)
+:将username+password写入user_info表;
+|数据库|
+:insert into user_info (username, password) values (xxx, yyy);
+|后端|
+:获取用户信息;
+|数据库|
+:select * from user_info where username = xxx;
+|后端|
+:拿到uid;
+:给用户生成token;
+:将uid, token, expire_time写入user_token表;
+|数据库|
+:insert into user_token (uid, token, expire_time) values (xxx, yyy, zzz);
+|后端|
+:完成注册;
+:cookie中设置token;
+:重定向到欢迎页面;
+|前端|
+:跳转到欢迎页面;
+stop
+@enduml

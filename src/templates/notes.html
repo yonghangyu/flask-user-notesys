@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+</head>
+<body>
+<h>笔记列表</h>
+    <br>
+<table border="1xp">
+    <tr>
+        <th>标题</th>
+        <th>创建时间</th>
+        <th>缩略词</th>
+        <th>操作</th>
+    </tr>
+        {% for note in note_list %}
+            <tr>
+                <td><a href="/notes/{{note['tid']}}">{{ note['title'] }}</a></td>
+                <td>{{ note['create_time'] }}</td>
+                <td>{{ note['abbr'] }}</td>
+                <td>
+                    <a href="/notes/{{note['tid']}}/delete">删除</a>
+                    <a href="/notes/{{note['tid']}}/edit">编辑</a>
+                </td>
+            </tr>
+        {% endfor %}
+</table>
+</body>
+</html>

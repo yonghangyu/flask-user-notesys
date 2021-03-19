@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+|前端|
+start
+:点击登录;
+:跳转到登录页面;
+:填写username, password;
+:点击登录;
+|后端|
+:拿到username, password;
+:根据username获取用户信息;
+|数据库|
+:select * from user_info where username = username;;
+|后端|
+if (是否取到用户信息) then (no)
+    :用户不存在;
+    :抛异常;
+    stop
+else (yes)
+if (判断前端请求的password和数据库中的password是否一致) then (no)
+    :登录失败;
+    stop
+else (yes)
+:密码验证成功;
+:拿到uid;
+:给用户生成token;
+:将uid, token, expire_time写入user_token表;
+|数据库|
+:insert into user_token (uid, token, expire_time) values (xxx, yyy, zzz);
+|后端|
+:登录成功;
+:cookie中设置token;
+:重定向到欢迎页面;
+|前端|
+:跳转到欢迎页面;
+stop
+
+@enduml

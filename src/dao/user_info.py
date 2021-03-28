@@ -3,11 +3,13 @@ __author__ = 'liuxiaotong'
 
 import dataset
 
+from config import database_url
+
 
 # data access object
 class UserInfoDao:
     #                     协议     账号  密码                ip   : 端口 / db_name
-    db = dataset.connect('mysql://root:123123@127.0.0.1/get_start')
+    db = dataset.connect(database_url)
 
     @classmethod
     def get_by_username(cls, username):

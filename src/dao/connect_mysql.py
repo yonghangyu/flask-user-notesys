@@ -2,8 +2,9 @@
 __author__ = 'liuxiaotong'
 
 import dataset
+from config import database_url
 
-db = dataset.connect('mysql://root:123123@127.0.0.1/get_start')
+db = dataset.connect(database_url)
 
 
 def get_by_uid(uid):

@@ -3,9 +3,10 @@ __author__ = 'liuxiaotong'
 
 import dataset
 
+from config import database_url
 
 class UserTokenDao:
-    db = dataset.connect('mysql://root:123123@127.0.0.1/get_start')
+    db = dataset.connect(database_url)
 
     @classmethod
     def create_token(cls, uid, token, expire_time):

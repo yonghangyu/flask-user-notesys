@@ -1,1 +1,1 @@
-database_url= 'mysql://root@localhost:3306/blog?charset=utf8'
+database_url= 'mysql://root:123123@localhost/get_start?charset=utf8'
